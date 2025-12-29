@@ -1,0 +1,10 @@
+[package]
+name = "evbunpack"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+argh = { version = "0.1.13", default-features = false, features = ["help"] }
+color-eyre = "0.6.5"
+evbunpack_core = { git = "https://github.com/ofkarosia/evbunpack_core" }
+fmmap = "0.4.0"
