@@ -83,6 +83,9 @@ impl Mmap {
 }
 
 fn main() -> Result<()> {
+    color_eyre::install()?;
+    pretty_env_logger::init();
+
     let Args { no_pe, no_vfs, output, file, variant } = argh::from_env();
     let output = output.unwrap_or_else(|| PathBuf::from("unpacked"));
     let mut mmap = if no_pe { Mmap::Readonly(MmapFile::open(&file)?) } else { Mmap::Writable(MmapFileMut::open_cow(&file)?) };
