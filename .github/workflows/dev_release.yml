@@ -1,9 +1,9 @@
-name: Release
+name: Dev Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -37,6 +37,8 @@ jobs:
       - name: Create Release and Upload Asset
         uses: softprops/action-gh-release@v2
         with:
+          prerelease: true
+          tag_name: dev_release
           files: target/ci/evbunpack-windows-x86_64.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
